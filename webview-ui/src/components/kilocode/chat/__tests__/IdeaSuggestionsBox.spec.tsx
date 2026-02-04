@@ -119,4 +119,23 @@ describe("IdeaSuggestionsBox", () => {
 		const buttons = screen.getAllByRole("button")
 		expect(buttons).toHaveLength(2)
 	})
+
+	// kilocode_change start
+	it("should use high-contrast icon styles in dark mode", () => {
+		vi.mocked(useTaskHistory).mockReturnValue({
+			data: { historyItems: [] },
+		} as any)
+
+		const { container } = render(<IdeaSuggestionsBox />)
+
+		const accentIcons = container.querySelectorAll("svg.text-vscode-textLink-foreground")
+		expect(accentIcons.length).toBeGreaterThanOrEqual(4)
+
+		const iconBadges = container.querySelectorAll("div.bg-vscode-list-hoverBackground")
+		expect(iconBadges).toHaveLength(2)
+
+		const suggestionButtons = container.querySelectorAll("button.hover\\:shadow-md")
+		expect(suggestionButtons).toHaveLength(2)
+	})
+	// kilocode_change end
 })

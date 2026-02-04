@@ -56,13 +56,15 @@ export const IdeaSuggestionsBox = () => {
 			<div className="w-full p-5 rounded-md border border-vscode-panel-border bg-vscode-input-background">
 				{/* Header section */}
 				<div className="text-center mb-5">
+					{/* kilocode_change start */}
 					<div className="inline-flex items-center gap-2 mb-2">
-						<Sparkles className="w-4 h-4 text-vscode-focusBorder" />
+						<Sparkles className="w-4 h-4 text-vscode-textLink-foreground" />
 						<p className="text-base font-semibold text-vscode-foreground m-0">
 							{t("ideaSuggestionsBox.newHere")}
 						</p>
-						<Sparkles className="w-4 h-4 text-vscode-focusBorder" />
+						<Sparkles className="w-4 h-4 text-vscode-textLink-foreground" />
 					</div>
+					{/* kilocode_change end */}
 					<p className="text-sm text-vscode-descriptionForeground m-0">
 						{t("ideaSuggestionsBox.tryOneOfThese")}
 					</p>
@@ -74,17 +76,15 @@ export const IdeaSuggestionsBox = () => {
 						<button
 							key={index}
 							onClick={() => handleIdeaClick(idea)}
-							className="group w-full px-4 py-3 text-left text-sm rounded border border-vscode-panel-border cursor-pointer transition-all duration-200 hover:border-vscode-focusBorder hover:shadow-sm bg-vscode-editor-background">
+							className="group w-full px-4 py-3 text-left text-sm rounded border border-vscode-panel-border cursor-pointer transition-all duration-200 hover:border-vscode-focusBorder hover:shadow-md hover:-translate-y-0.5 bg-vscode-editor-background">
 							<div className="flex items-start gap-3">
-								<div
-									className="flex-shrink-0 w-7 h-7 rounded flex items-center justify-center transition-colors duration-200 group-hover:bg-vscode-focusBorder"
-									style={{
-										background: "color-mix(in srgb, var(--vscode-focusBorder) 15%, transparent)",
-									}}>
-									<Lightbulb className="w-4 h-4 text-vscode-focusBorder transition-colors duration-200 group-hover:text-vscode-button-foreground" />
+								{/* kilocode_change start */}
+								<div className="flex-shrink-0 w-7 h-7 rounded flex items-center justify-center bg-vscode-list-hoverBackground transition-all duration-200 group-hover:bg-vscode-focusBorder group-hover:shadow-sm">
+									<Lightbulb className="w-4 h-4 text-vscode-textLink-foreground transition-all duration-200 group-hover:text-vscode-button-foreground group-hover:scale-110" />
 								</div>
+								{/* kilocode_change end */}
 								<span className="flex-1 text-vscode-foreground leading-relaxed pt-0.5">{idea}</span>
-								<ArrowRight className="w-4 h-4 text-vscode-descriptionForeground opacity-0 group-hover:opacity-100 transition-opacity duration-200 mt-1" />
+								<ArrowRight className="w-4 h-4 text-vscode-descriptionForeground opacity-0 translate-x-0 transition-all duration-200 mt-1 group-hover:opacity-100 group-hover:translate-x-0.5" />
 							</div>
 						</button>
 					))}
